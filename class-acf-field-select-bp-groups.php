@@ -115,7 +115,7 @@ class acf_field_select_bp_groups extends acf_field_select {
     /**
      * Ensure the value is either null, or an array of integers.
      *
-     * @since NEXT
+     * @since 1.0.0
      * @param mixed $value
      * @param int $post_id
      * @param array $field
