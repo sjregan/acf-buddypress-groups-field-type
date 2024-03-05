@@ -16,5 +16,8 @@ This ACF field type is compatible with ACF v6+.
 
 == Changelog ==
 
+= 1.1.0 =
+* Feature: support stylised select UI.
+
 = 1.0.0 =
 * Initial Release.

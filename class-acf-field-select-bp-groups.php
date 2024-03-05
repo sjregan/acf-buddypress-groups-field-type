@@ -11,20 +11,27 @@ class acf_field_select_bp_groups extends acf_field_select {
      * @since 1.0.0
      */
     public function initialize() {
-        parent::initialize();
+        $this->name          = 'select_bp_groups';
+        $this->label         = _x( 'BuddyPress Groups', 'select field label', 'acf-bp-groups-field-type' );
+        $this->category      = 'relational';
+        $this->description   = __( 'A dropdown list with a selection of choices that you specify.', 'acf' );
+        $this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-select.png';
+        $this->defaults      = [
+            'groups'             => 0,
+            'multiple'           => 1,
+            'allow_null'         => 0,
+            'choices'            => [],
+            'default_value'      => '',
+            'ui'                 => 0,
+            'ajax'               => 0,
+            'placeholder'        => '',
+            'return_format'      => 'id',
+            'display_all_groups' => 1,
+        ];
 
-        $this->name     = 'select_bp_groups';
-        $this->label    = _x( 'BuddyPress Groups', 'select field label', 'acf-bp-groups-field-type' );
-        $this->category = 'relational';
-        $this->defaults = array_merge(
-            $this->defaults,
-            [
-                'groups'             => 0,
-                'multiple'           => 1,
-                'return_format'      => 'id',
-                'display_all_groups' => 1,
-            ]
-        );
+        // AJAX
+        add_action( 'wp_ajax_acf/fields/select_bp_groups/query', [ $this, 'ajax_query' ] );
+        add_action( 'wp_ajax_nopriv_acf/fields/select_bp_groups/query', [ $this, 'ajax_query' ] );
     }
 
     /**
