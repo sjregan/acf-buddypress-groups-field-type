@@ -35,8 +35,7 @@
         $.extend(field.data, $select.data());
 
         customData = {
-            select2: null,
-            $select: $select
+            select2: null
         };
 
         // Initialise select2 if required
@@ -48,7 +47,7 @@
                 ajaxAction = 'acf/fields/select_bp_groups/query';
             }
 
-            customData.select2 = acf.newSelect2(customData.$select, {
+            customData.select2 = acf.newSelect2($select, {
                 field: field,
                 ajax: field.data.ajax,
                 multiple: field.data.multiple,
