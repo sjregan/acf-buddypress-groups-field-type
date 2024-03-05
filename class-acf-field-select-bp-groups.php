@@ -14,7 +14,11 @@ class acf_field_select_bp_groups extends acf_field_select {
         $this->name          = 'select_bp_groups';
         $this->label         = _x( 'BuddyPress Groups', 'select field label', 'acf-bp-groups-field-type' );
         $this->category      = 'relational';
-        $this->description   = __( 'A dropdown list with a selection of choices that you specify.', 'acf' );
+        $this->description   = _x(
+            'A dropdown list with a selection of BuddyPress groups.',
+            'select field label',
+            'acf-bp-groups-field-type'
+        );
         $this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-select.png';
         $this->defaults      = [
             'groups'             => 0,
@@ -88,7 +92,7 @@ class acf_field_select_bp_groups extends acf_field_select {
                 'show_hidden' => true,
             ];
 
-            $groups  = groups_get_groups( $args );
+            $groups = groups_get_groups( $args );
 
             foreach ( $groups['groups'] as $group ) {
                 $choices[ $group->id ] = bp_get_group_name( $group );
